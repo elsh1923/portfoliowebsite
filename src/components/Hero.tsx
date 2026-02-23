@@ -105,7 +105,7 @@ export default function Hero() {
             Welcome to my creative universe
           </motion.span>
           
-          <h1 className="text-5xl md:text-7xl lg:text-9xl font-heading font-extrabold mb-8 leading-[1.1] tracking-tight max-w-5xl mx-auto flex flex-wrap justify-center gap-x-4 gap-y-2">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-heading font-extrabold mb-6 md:mb-8 leading-[1.1] tracking-tight max-w-5xl mx-auto flex flex-wrap justify-center gap-x-3 gap-y-2">
             {headline.map((word, i) => (
               <motion.span
                 key={i}
@@ -136,12 +136,12 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.5, duration: 0.8 }}
-            className="flex flex-col md:flex-row items-center justify-center gap-6"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 w-full px-4"
           >
             <MagneticButton>
               <a
                 href="#portfolio"
-                className="px-10 py-5 bg-accent-gold text-white font-bold rounded-full flex items-center group transition-all hover:bg-yellow-500 hover:shadow-[0_0_30px_rgba(249,168,38,0.5)]"
+                className="w-full sm:w-auto px-8 py-4 md:px-10 md:py-5 bg-accent-gold text-white font-bold rounded-full flex items-center justify-center group transition-all hover:bg-yellow-500 hover:shadow-[0_0_30px_rgba(249,168,38,0.5)]"
               >
                 View Portfolio
                 <div className="ml-3 overflow-hidden relative w-5 h-5">
@@ -162,7 +162,7 @@ export default function Hero() {
                 href="/Elshaday-Dagne-Demessie-websiteCvFeb2026.pdf"
                 target="_blank"
                 download="Elshaday-Dagne-Demessie-websiteCvFeb2026.pdf"
-                className="px-10 py-5 border border-white/20 text-white font-bold rounded-full flex items-center transition-all hover:border-white hover:bg-white/5"
+                className="w-full sm:w-auto px-8 py-4 md:px-10 md:py-5 border border-white/20 text-white font-bold rounded-full flex items-center justify-center transition-all hover:border-white hover:bg-white/5"
               >
                 Download CV
                 <Download className="ml-3" size={20} />

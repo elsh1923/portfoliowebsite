@@ -28,7 +28,7 @@ export default function About() {
       <div className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-gradient-to-t from-accent-gold/5 to-transparent blur-[100px] pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-20">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
           
           {/* Image Side with Parallax */}
           <motion.div

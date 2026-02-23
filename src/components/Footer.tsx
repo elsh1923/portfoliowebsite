@@ -52,12 +52,16 @@ export default function Footer() {
               A passionate Full-Stack Developer specializing in crafting immersive, high-performance digital experiences. 
             </p>
             
-            <div className="flex items-center gap-4 text-white/40 text-sm font-medium tracking-widest uppercase">
-              <span className="relative flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-gold opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-accent-gold"></span>
-              </span>
-              Based in Addis Ababa — {time || "Loading..."} EAT
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 text-white/40 text-xs sm:text-sm font-medium tracking-widest uppercase">
+              <div className="flex items-center gap-3">
+                <span className="relative flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-gold opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-accent-gold"></span>
+                </span>
+                <span>Based in Addis Ababa</span>
+              </div>
+              <span className="hidden sm:inline">—</span>
+              <span>{time || "Loading..."} EAT</span>
             </div>
           </div>
 

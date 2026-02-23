@@ -11,7 +11,7 @@ export default function Contact() {
       <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-accent-purple/10 blur-[150px] rounded-full pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
           
           {/* Left Text */}
           <motion.div
@@ -28,7 +28,7 @@ export default function Contact() {
               </span>
             </div>
 
-            <h2 className="text-4xl md:text-5xl lg:text-7xl font-heading font-extrabold mb-8 leading-[1.1] tracking-tight">
+            <h2 className="text-3xl md:text-5xl lg:text-7xl font-heading font-extrabold mb-6 md:mb-8 leading-[1.1] tracking-tight">
               Let's Create <br/> Something <span className="text-accent-gold italic font-light font-body">Extraordinary.</span>
             </h2>
             
@@ -74,7 +74,7 @@ export default function Contact() {
             <div className="absolute inset-0 bg-gradient-to-tr from-accent-purple/10 to-accent-gold/10 rounded-[2rem] blur-2xl transform scale-110 -z-10" />
             <div className="bg-secondary/40 backdrop-blur-2xl p-10 md:p-12 rounded-[2rem] border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)]">
               <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
                   <div className="space-y-3 group/input">
                     <label className="text-xs font-bold text-white/50 uppercase tracking-[0.2em] ml-2 group-focus-within/input:text-accent-gold transition-colors">Name</label>
                     <input

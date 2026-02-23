@@ -174,7 +174,7 @@ export default function Portfolio() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="text-4xl md:text-5xl lg:text-7xl font-heading font-extrabold tracking-tight"
+              className="text-3xl md:text-5xl lg:text-7xl font-heading font-extrabold tracking-tight"
             >
               Creative <span className="text-white/40 italic font-light">Showcase</span>
             </motion.h2>
