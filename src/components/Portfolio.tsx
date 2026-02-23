@@ -9,7 +9,7 @@ const projects = [
     id: 1,
     title: "NextJemari",
     category: "Knowledge Hub",
-    image: "/nextjemari-thumb.png",
+    image: "/nextjemari-thumb-v2.png",
     description: "A full-stack knowledge-sharing platform where users can create, publish, and manage MDX-based technical articles. Features authentication, user profiles, and full-text search.",
     tags: ["Next.js", "PostgreSQL", "Prisma", "TypeScript"],
     link: "https://next-jemari-sl3l.vercel.app/",
