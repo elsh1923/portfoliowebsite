@@ -60,7 +60,7 @@ export default function CustomCursor() {
     <>
       {/* Gemini Style Glow / Aura */}
       <motion.div
-        className="fixed top-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-accent-purple/40 via-accent-gold/20 to-blue-500/30 rounded-full blur-[100px] pointer-events-none z-[9997] block"
+        className="fixed top-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-accent-purple/40 via-accent-gold/20 to-blue-500/30 rounded-full blur-[100px] pointer-events-none z-[9997] hidden md:block"
         style={{
           x: glowX,
           y: glowY,
