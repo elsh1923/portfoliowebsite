@@ -88,8 +88,8 @@ export default function CustomCursor() {
         }}
         transition={{ duration: 0.4 }}
       >
-        <div className="bg-secondary/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/5 shadow-2xl">
-          <span className="bg-gradient-to-r from-accent-gold via-[#ffb94f] to-accent-purple bg-clip-text text-transparent font-heading font-extrabold tracking-[0.15em] uppercase text-[10px] md:text-xs">
+        <div className="bg-secondary/40 backdrop-blur-md px-5 py-2.5 rounded-full border border-white/5 shadow-2xl">
+          <span className="bg-gradient-to-r from-accent-gold via-[#ffb94f] to-accent-purple bg-clip-text text-transparent font-heading font-extrabold tracking-[0.15em] uppercase text-xs md:text-sm">
             Let's work together
           </span>
         </div>
