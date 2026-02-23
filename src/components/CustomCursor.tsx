@@ -5,7 +5,6 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export default function CustomCursor() {
   const [isHovering, setIsHovering] = useState(false);
-  const [isMoving, setIsMoving] = useState(false);
 
   // Use motion values for better performance (avoids re-rendering component on every mousemove)
   const mouseX = useMotionValue(0);
@@ -30,15 +29,9 @@ export default function CustomCursor() {
   const textY = useSpring(mouseY, springConfigText);
 
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout;
-
     const updateMousePosition = (e: MouseEvent) => {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
-      
-      setIsMoving(true);
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => setIsMoving(false), 200); // Hide after 200ms of no movement
     };
 
     const handleMouseOver = (e: MouseEvent) => {
@@ -60,7 +53,6 @@ export default function CustomCursor() {
     return () => {
       window.removeEventListener("mousemove", updateMousePosition);
       window.removeEventListener("mouseover", handleMouseOver);
-      clearTimeout(timeoutId);
     };
   }, [mouseX, mouseY]);
 
@@ -92,13 +84,15 @@ export default function CustomCursor() {
           translateY: "-50%",
         }}
         animate={{
-          opacity: (!isHovering && isMoving) ? 0.4 : 0, // Show only when moving on empty space
+          opacity: isHovering ? 0 : 0.8, // Show always when not hovering
         }}
-        transition={{ duration: 0.3 }}
+        transition={{ duration: 0.4 }}
       >
-        <span className="text-white font-heading font-medium tracking-[0.2em] uppercase text-xs mix-blend-difference">
-          Let's work together
-        </span>
+        <div className="bg-secondary/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/5 shadow-2xl">
+          <span className="bg-gradient-to-r from-accent-gold via-[#ffb94f] to-accent-purple bg-clip-text text-transparent font-heading font-extrabold tracking-[0.15em] uppercase text-[10px] md:text-xs">
+            Let's work together
+          </span>
+        </div>
       </motion.div>
 
       {/* Main Cursor Dot */}
