@@ -5,6 +5,7 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export default function CustomCursor() {
   const [isHovering, setIsHovering] = useState(false);
+  const [isMoving, setIsMoving] = useState(false);
 
   // Use motion values for better performance (avoids re-rendering component on every mousemove)
   const mouseX = useMotionValue(0);
@@ -14,6 +15,7 @@ export default function CustomCursor() {
   const springConfigDot = { damping: 28, stiffness: 1000, mass: 0.1 };
   const springConfigRing = { damping: 20, stiffness: 200, mass: 0.5 };
   const springConfigGlow = { damping: 40, stiffness: 60, mass: 2 }; // Lagging magical glow
+  const springConfigText = { damping: 30, stiffness: 120, mass: 1 }; // Text springs
 
   const dotX = useSpring(mouseX, springConfigDot);
   const dotY = useSpring(mouseY, springConfigDot);
@@ -24,10 +26,19 @@ export default function CustomCursor() {
   const glowX = useSpring(mouseX, springConfigGlow);
   const glowY = useSpring(mouseY, springConfigGlow);
 
+  const textX = useSpring(mouseX, springConfigText);
+  const textY = useSpring(mouseY, springConfigText);
+
   useEffect(() => {
+    let timeoutId: NodeJS.Timeout;
+
     const updateMousePosition = (e: MouseEvent) => {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
+      
+      setIsMoving(true);
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => setIsMoving(false), 200); // Hide after 200ms of no movement
     };
 
     const handleMouseOver = (e: MouseEvent) => {
@@ -49,6 +60,7 @@ export default function CustomCursor() {
     return () => {
       window.removeEventListener("mousemove", updateMousePosition);
       window.removeEventListener("mouseover", handleMouseOver);
+      clearTimeout(timeoutId);
     };
   }, [mouseX, mouseY]);
 
@@ -69,6 +81,25 @@ export default function CustomCursor() {
         }}
         transition={{ duration: 0.8 }}
       />
+
+      {/* Watermark Text */}
+      <motion.div
+        className="fixed top-0 left-0 pointer-events-none z-[9998] hidden md:flex whitespace-nowrap"
+        style={{
+          x: textX,
+          y: textY,
+          translateX: "30px", // Offset from cursor center
+          translateY: "-50%",
+        }}
+        animate={{
+          opacity: (!isHovering && isMoving) ? 0.4 : 0, // Show only when moving on empty space
+        }}
+        transition={{ duration: 0.3 }}
+      >
+        <span className="text-white font-heading font-medium tracking-[0.2em] uppercase text-xs mix-blend-difference">
+          Let's work together
+        </span>
+      </motion.div>
 
       {/* Main Cursor Dot */}
       <motion.div
