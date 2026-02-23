@@ -29,12 +29,12 @@ export default function CustomCursor() {
   const textY = useSpring(mouseY, springConfigText);
 
   useEffect(() => {
-    const updateMousePosition = (e: MouseEvent) => {
+    const updateMousePosition = (e: PointerEvent) => {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
     };
 
-    const handleMouseOver = (e: MouseEvent) => {
+    const handleMouseOver = (e: PointerEvent) => {
       const target = e.target as HTMLElement;
       // Check if the target is clickable (a, button, or has cursor-pointer)
       const isClickable =
@@ -47,12 +47,12 @@ export default function CustomCursor() {
       setIsHovering(Boolean(isClickable));
     };
 
-    window.addEventListener("mousemove", updateMousePosition);
-    window.addEventListener("mouseover", handleMouseOver);
+    window.addEventListener("pointermove", updateMousePosition as EventListener);
+    window.addEventListener("pointerover", handleMouseOver as EventListener);
 
     return () => {
-      window.removeEventListener("mousemove", updateMousePosition);
-      window.removeEventListener("mouseover", handleMouseOver);
+      window.removeEventListener("pointermove", updateMousePosition as EventListener);
+      window.removeEventListener("pointerover", handleMouseOver as EventListener);
     };
   }, [mouseX, mouseY]);
 
@@ -60,7 +60,7 @@ export default function CustomCursor() {
     <>
       {/* Gemini Style Glow / Aura */}
       <motion.div
-        className="fixed top-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-accent-purple/40 via-accent-gold/20 to-blue-500/30 rounded-full blur-[100px] pointer-events-none z-[9997] hidden md:block"
+        className="fixed top-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-accent-purple/40 via-accent-gold/20 to-blue-500/30 rounded-full blur-[100px] pointer-events-none z-[9997] block"
         style={{
           x: glowX,
           y: glowY,
@@ -76,7 +76,7 @@ export default function CustomCursor() {
 
       {/* Watermark Text */}
       <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-[9998] hidden md:flex whitespace-nowrap"
+        className="fixed top-0 left-0 pointer-events-none z-[9998] flex whitespace-nowrap"
         style={{
           x: textX,
           y: textY,
@@ -97,7 +97,7 @@ export default function CustomCursor() {
 
       {/* Main Cursor Dot */}
       <motion.div
-        className="fixed top-0 left-0 w-3 h-3 bg-accent-gold rounded-full pointer-events-none z-[9999] mix-blend-difference hidden md:block"
+        className="fixed top-0 left-0 w-3 h-3 bg-accent-gold rounded-full pointer-events-none z-[9999] mix-blend-difference block"
         style={{
           x: dotX,
           y: dotY,
@@ -112,7 +112,7 @@ export default function CustomCursor() {
       
       {/* Outer Cursor Ring */}
       <motion.div
-        className="fixed top-0 left-0 w-10 h-10 border border-white/50 rounded-full pointer-events-none z-[9998] mix-blend-difference hidden md:flex items-center justify-center"
+        className="fixed top-0 left-0 w-10 h-10 border border-white/50 rounded-full pointer-events-none z-[9998] mix-blend-difference flex items-center justify-center"
         style={{
           x: ringX,
           y: ringY,
