@@ -78,9 +78,8 @@ export default function Footer() {
             <h4 className="text-white uppercase tracking-[0.2em] text-sm font-bold mb-6">Socials</h4>
             <ul className="space-y-4">
               {[
-                { name: "GitHub", href: "https://github.com", icon: Github },
-                { name: "LinkedIn", href: "https://linkedin.com", icon: Linkedin },
-                { name: "Twitter", href: "https://twitter.com", icon: Twitter },
+                { name: "GitHub", href: "https://github.com/elsh1923", icon: Github },
+                { name: "LinkedIn", href: "https://www.linkedin.com/in/elshaday-dagne-b4a6b1238/", icon: Linkedin },
               ].map((social) => (
                 <li key={social.name}>
                   <a 

@@ -141,7 +141,7 @@ export default function Hero() {
             <MagneticButton>
               <a
                 href="#portfolio"
-                className="px-10 py-5 bg-white text-primary font-bold rounded-full flex items-center group transition-all hover:bg-accent-gold hover:shadow-[0_0_30px_rgba(249,168,38,0.5)]"
+                className="px-10 py-5 bg-accent-gold text-white font-bold rounded-full flex items-center group transition-all hover:bg-yellow-500 hover:shadow-[0_0_30px_rgba(249,168,38,0.5)]"
               >
                 View Portfolio
                 <div className="ml-3 overflow-hidden relative w-5 h-5">
@@ -161,6 +161,7 @@ export default function Hero() {
               <a
                 href="/Elshaday-Dagne-Demessie-websiteCvFeb2026.pdf"
                 target="_blank"
+                download="Elshaday-Dagne-Demessie-websiteCvFeb2026.pdf"
                 className="px-10 py-5 border border-white/20 text-white font-bold rounded-full flex items-center transition-all hover:border-white hover:bg-white/5"
               >
                 Download CV

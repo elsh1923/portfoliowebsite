@@ -14,9 +14,8 @@ const navLinks = [
 ];
 
 const socialLinks = [
-  { icon: Github, href: "https://github.com", label: "GitHub" },
-  { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-  { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
+  { icon: Github, href: "https://github.com/elsh1923", label: "GitHub" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/elshaday-dagne-b4a6b1238/", label: "LinkedIn" },
 ];
 
 export default function Navbar() {
