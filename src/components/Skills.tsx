@@ -9,7 +9,6 @@ const skills = [
   { name: "Node.js", level: 85, color: "#339933" },
   { name: "PostgreSQL", level: 88, color: "#4169E1" },
   { name: "MongoDB", level: 85, color: "#47A248" },
-  { name: "Prisma ORM", level: 82, color: "#2D3748" },
   { name: "Tailwind CSS", level: 95, color: "#38BDF8" },
 ];
 
