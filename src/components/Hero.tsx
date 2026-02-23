@@ -54,7 +54,7 @@ export default function Hero() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
     >
       {/* Background Animated Shapes (Cinematic Blobs) */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 hidden md:block">
         <div className="absolute inset-0 bg-primary/40 backdrop-blur-[100px] z-10 pointer-events-none" />
         {shapes.map((shape) => (
           <motion.div
