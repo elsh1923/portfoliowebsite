@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Menu, X, Github, Linkedin, Twitter } from "lucide-react";
 import { useState, useEffect } from "react";
+import MagneticButton from "./MagneticButton";
 
 const navLinks = [
   { name: "Home", href: "#home" },
@@ -41,37 +42,42 @@ export default function Navbar() {
       }`}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          className="text-2xl font-heading font-extrabold bg-gradient-to-r from-accent-gold to-accent-purple bg-clip-text text-transparent"
-        >
-          ELSHADAY<span className="text-white">.</span>
-        </motion.div>
+        <MagneticButton>
+          <motion.a
+            href="#home"
+            whileHover={{ scale: 1.05 }}
+            className="text-2xl font-heading font-extrabold bg-gradient-to-r from-accent-gold to-accent-purple bg-clip-text text-transparent p-2"
+          >
+            ELSHADAY<span className="text-white">.</span>
+          </motion.a>
+        </MagneticButton>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center space-x-2">
           {navLinks.map((link) => (
-            <motion.a
-              key={link.name}
-              href={link.href}
-              whileHover={{ scale: 1.1, color: "#F9A826" }}
-              className="text-white/80 hover:text-accent-gold font-medium transition-colors"
-            >
-              {link.name}
-            </motion.a>
-          ))}
-          <div className="flex items-center space-x-4 border-l border-white/10 pl-8">
-            {socialLinks.map((social) => (
+            <MagneticButton key={link.name}>
               <motion.a
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ y: -3, color: "#F9A826" }}
-                className="text-white/60 hover:text-accent-gold transition-colors"
+                href={link.href}
+                whileHover={{ color: "#F9A826" }}
+                className="text-white/80 hover:text-accent-gold font-medium transition-colors px-4 py-2"
               >
-                <social.icon size={20} />
+                {link.name}
               </motion.a>
+            </MagneticButton>
+          ))}
+          <div className="flex items-center space-x-2 border-l border-white/10 pl-6 ml-4">
+            {socialLinks.map((social) => (
+              <MagneticButton key={social.label}>
+                <motion.a
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ color: "#F9A826" }}
+                  className="text-white/60 hover:text-accent-gold transition-colors p-2"
+                >
+                  <social.icon size={20} />
+                </motion.a>
+              </MagneticButton>
             ))}
           </div>
         </div>

@@ -5,107 +5,123 @@ import { Send, Phone, Mail, MapPin } from "lucide-react";
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-24 bg-secondary/30 relative">
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+    <section id="contact" className="py-32 bg-primary relative overflow-hidden">
+      {/* Background Decor */}
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-accent-gold/5 lg:from-accent-gold/10 to-transparent blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-accent-purple/10 blur-[150px] rounded-full pointer-events-none" />
+
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
+          
+          {/* Left Text */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="flex flex-col justify-center"
           >
-            <span className="text-accent-gold font-bold tracking-widest uppercase mb-4 block underline decoration-accent-purple/50 underline-offset-8">
-              Get In Touch
-            </span>
-            <h2 className="text-4xl md:text-5xl font-heading font-extrabold mb-6 leading-tight">
-              Let's Create Something <span className="text-accent-gold">Extraordinary</span>
+            <div className="flex items-center gap-4 mb-6">
+              <div className="h-[1px] w-8 bg-accent-purple" />
+              <span className="text-accent-purple font-bold tracking-[0.2em] uppercase text-sm">
+                Get In Touch
+              </span>
+            </div>
+
+            <h2 className="text-4xl md:text-5xl lg:text-7xl font-heading font-extrabold mb-8 leading-[1.1] tracking-tight">
+              Let's Create <br/> Something <span className="text-accent-gold italic font-light font-body">Extraordinary.</span>
             </h2>
-            <p className="text-lg text-white/60 mb-10 font-body leading-relaxed">
-              Whether you have a groundbreaking project in mind or just want to say hello, my inbox is always open. Let's explore how we can work together to bring your ideas to life.
+            
+            <p className="text-lg md:text-xl text-white/50 mb-12 font-body leading-relaxed font-light max-w-lg">
+              Whether you have a groundbreaking project in mind or just want to explore opportunities, my inbox is always open. 
             </p>
 
             <div className="space-y-8">
-              <div className="flex items-center gap-6 group">
-                <div className="w-14 h-14 bg-accent-purple/10 rounded-2xl flex items-center justify-center text-accent-purple group-hover:bg-accent-purple group-hover:text-white transition-all">
-                  <Mail size={24} />
-                </div>
-                <div>
-                  <p className="text-white/40 text-sm font-bold uppercase tracking-widest">Email Me</p>
-                  <p className="text-xl font-heading font-semibold">elshadaydagne480@gmail.com</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-6 group">
-                <div className="w-14 h-14 bg-accent-gold/10 rounded-2xl flex items-center justify-center text-accent-gold group-hover:bg-accent-gold group-hover:text-primary transition-all">
-                  <Phone size={24} />
-                </div>
-                <div>
-                  <p className="text-white/40 text-sm font-bold uppercase tracking-widest">Call Me</p>
-                  <p className="text-xl font-heading font-semibold">+251927617474</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-6 group">
-                <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-white/60 group-hover:bg-white group-hover:text-primary transition-all">
-                  <MapPin size={24} />
-                </div>
-                <div>
-                  <p className="text-white/40 text-sm font-bold uppercase tracking-widest">Location</p>
-                  <p className="text-xl font-heading font-semibold">Addis Ababa, Ethiopia</p>
-                </div>
-              </div>
+              {[
+                { icon: Mail, label: "Email Me", value: "elshadaydagne480@gmail.com", color: "from-accent-gold to-accent-purple" },
+                { icon: Phone, label: "Call Me", value: "+251927617474", color: "from-accent-purple to-accent-gold" },
+                { icon: MapPin, label: "Location", value: "Addis Ababa, Ethiopia", color: "from-white/20 to-white/5" }
+              ].map((item, i) => (
+                <motion.div 
+                  key={item.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 + (i * 0.1), duration: 0.5 }}
+                  className="flex items-center gap-6 group cursor-pointer"
+                >
+                  <div className="relative flex items-center justify-center w-16 h-16 rounded-2xl overflow-hidden bg-white/5 border border-white/10 group-hover:border-white/30 transition-colors duration-500">
+                    <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-20 transition-opacity duration-500`} />
+                    <item.icon size={24} className="text-white/70 group-hover:text-white transition-colors duration-500 relative z-10" />
+                  </div>
+                  <div>
+                    <p className="text-white/40 text-xs font-bold uppercase tracking-[0.2em] mb-1">{item.label}</p>
+                    <p className="text-xl font-heading font-semibold text-white group-hover:text-accent-gold transition-colors duration-300">{item.value}</p>
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
 
+          {/* Right Form */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="bg-primary/50 backdrop-blur-md p-10 rounded-3xl border border-white/5 shadow-2xl"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative"
           >
-            <form className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-sm font-bold text-white/60 uppercase tracking-widest ml-1">Name</label>
+            <div className="absolute inset-0 bg-gradient-to-tr from-accent-purple/10 to-accent-gold/10 rounded-[2rem] blur-2xl transform scale-110 -z-10" />
+            <div className="bg-secondary/40 backdrop-blur-2xl p-10 md:p-12 rounded-[2rem] border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+              <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="space-y-3 group/input">
+                    <label className="text-xs font-bold text-white/50 uppercase tracking-[0.2em] ml-2 group-focus-within/input:text-accent-gold transition-colors">Name</label>
+                    <input
+                      type="text"
+                      placeholder="John Doe"
+                      className="w-full px-6 py-4 bg-white/[0.03] border-b-2 border-transparent focus:border-accent-gold focus:bg-white/[0.05] rounded-xl outline-none transition-all placeholder:text-white/20 font-body text-white"
+                    />
+                  </div>
+                  <div className="space-y-3 group/input">
+                    <label className="text-xs font-bold text-white/50 uppercase tracking-[0.2em] ml-2 group-focus-within/input:text-accent-gold transition-colors">Email</label>
+                    <input
+                      type="email"
+                      placeholder="hello@example.com"
+                      className="w-full px-6 py-4 bg-white/[0.03] border-b-2 border-transparent focus:border-accent-gold focus:bg-white/[0.05] rounded-xl outline-none transition-all placeholder:text-white/20 font-body text-white"
+                    />
+                  </div>
+                </div>
+                <div className="space-y-3 group/input">
+                  <label className="text-xs font-bold text-white/50 uppercase tracking-[0.2em] ml-2 group-focus-within/input:text-accent-gold transition-colors">Subject</label>
                   <input
                     type="text"
-                    placeholder="John Doe"
-                    className="w-full px-6 py-4 bg-secondary/50 border border-white/10 rounded-xl focus:border-accent-gold outline-none transition-all placeholder:text-white/20"
+                    placeholder="Project Inquiry"
+                    className="w-full px-6 py-4 bg-white/[0.03] border-b-2 border-transparent focus:border-accent-gold focus:bg-white/[0.05] rounded-xl outline-none transition-all placeholder:text-white/20 font-body text-white"
                   />
                 </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-bold text-white/60 uppercase tracking-widest ml-1">Email</label>
-                  <input
-                    type="email"
-                    placeholder="john@example.com"
-                    className="w-full px-6 py-4 bg-secondary/50 border border-white/10 rounded-xl focus:border-accent-gold outline-none transition-all placeholder:text-white/20"
+                <div className="space-y-3 group/input">
+                  <label className="text-xs font-bold text-white/50 uppercase tracking-[0.2em] ml-2 group-focus-within/input:text-accent-gold transition-colors">Message</label>
+                  <textarea
+                    rows={4}
+                    placeholder="Tell me about your vision..."
+                    className="w-full px-6 py-4 bg-white/[0.03] border-b-2 border-transparent focus:border-accent-gold focus:bg-white/[0.05] rounded-xl outline-none transition-all placeholder:text-white/20 resize-none font-body text-white"
                   />
                 </div>
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm font-bold text-white/60 uppercase tracking-widest ml-1">Subject</label>
-                <input
-                  type="text"
-                  placeholder="Project Enquiry"
-                  className="w-full px-6 py-4 bg-secondary/50 border border-white/10 rounded-xl focus:border-accent-gold outline-none transition-all placeholder:text-white/20"
-                />
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm font-bold text-white/60 uppercase tracking-widest ml-1">Message</label>
-                <textarea
-                  rows={5}
-                  placeholder="Tell me about your project..."
-                  className="w-full px-6 py-4 bg-secondary/50 border border-white/10 rounded-xl focus:border-accent-gold outline-none transition-all placeholder:text-white/20 resize-none"
-                />
-              </div>
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full py-4 bg-gradient-to-r from-accent-gold to-accent-purple text-primary font-bold rounded-xl flex items-center justify-center gap-3 transition-all hover:shadow-[0_0_30px_rgba(108,99,255,0.3)] shadow-xl"
-              >
-                Send Message <Send size={20} />
-              </motion.button>
-            </form>
+                
+                <motion.button
+                  whileHover={{ scale: 1.02, backgroundColor: "#fff", color: "#0A0B10" }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full py-5 bg-gradient-to-r from-accent-gold to-accent-purple text-primary font-bold tracking-wide uppercase rounded-xl flex items-center justify-center gap-3 transition-all shadow-[0_10px_40px_rgba(249,168,38,0.3)] hover:shadow-[0_10px_60px_rgba(249,168,38,0.5)] border border-transparent hover:border-white relative overflow-hidden group"
+                >
+                  <span className="relative z-10 flex items-center gap-3">
+                    Send Message <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                  </span>
+                </motion.button>
+              </form>
+            </div>
           </motion.div>
+        
         </div>
       </div>
     </section>

@@ -15,68 +15,98 @@ const skills = [
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-24 relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-accent-gold/5 blur-[120px] rounded-full" />
-      <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-accent-purple/5 blur-[120px] rounded-full" />
+    <section id="skills" className="py-32 relative overflow-hidden bg-secondary/10">
+      <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-accent-gold/5 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-[-10%] left-[-5%] w-[600px] h-[600px] bg-accent-purple/5 blur-[150px] rounded-full pointer-events-none" />
 
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <motion.span
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="text-center mb-20">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="text-accent-gold font-bold tracking-widest uppercase mb-4 block"
+            transition={{ duration: 0.8 }}
+            className="inline-flex items-center gap-4 mb-6"
           >
-            Technical Stack
-          </motion.span>
+            <div className="h-[1px] w-8 bg-accent-gold" />
+            <span className="text-accent-gold font-bold tracking-[0.2em] uppercase text-sm">
+              Technical Stack
+            </span>
+            <div className="h-[1px] w-8 bg-accent-gold" />
+          </motion.div>
+          
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl font-heading font-extrabold"
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold tracking-tight"
           >
-            Expertise & <span className="text-accent-gold">Skills</span>
+            Expertise & <span className="bg-gradient-to-r from-accent-purple to-accent-gold bg-clip-text text-transparent italic pr-2">Skills</span>
           </motion.h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {skills.map((skill, i) => (
             <motion.div
               key={skill.name}
-              initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="group"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.7, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="group relative"
             >
-              <div className="flex justify-between items-center mb-3">
-                <span className="text-lg font-heading font-semibold text-white group-hover:text-accent-gold transition-colors">
-                  {skill.name}
-                </span>
-                <span className="text-white/40 text-sm font-body">
-                  {skill.level}%
-                </span>
-              </div>
-              <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden">
-                <motion.div
-                  initial={{ width: 0 }}
-                  whileInView={{ width: `${skill.level}%` }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1.5, ease: "easeOut", delay: 0.5 }}
-                  className="h-full rounded-full bg-gradient-to-r from-accent-gold to-accent-purple"
-                  style={{
-                    boxShadow: "0 0 10px rgba(249, 168, 38, 0.3)",
-                  }}
+              <div 
+                className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl blur-xl"
+                style={{ backgroundColor: `${skill.color}15` }}
+              />
+              <div className="relative h-full bg-white/[0.02] backdrop-blur-sm border border-white/5 group-hover:border-white/20 p-8 rounded-2xl overflow-hidden shadow-lg transition-all duration-500 hover:-translate-y-2 group-hover:shadow-2xl">
+                
+                {/* Decorative glowing orb in corner */}
+                <div 
+                  className="absolute -top-10 -right-10 w-32 h-32 rounded-full blur-3xl opacity-0 group-hover:opacity-50 transition-opacity duration-700"
+                  style={{ backgroundColor: skill.color }}
                 />
+
+                <div className="flex flex-col h-full justify-between relative z-10">
+                  <div className="mb-8">
+                    <span 
+                      className="text-2xl font-heading font-bold text-white transition-colors duration-500"
+                      style={{ textShadow: `0 0 20px ${skill.color}00` }}
+                    >
+                      {skill.name}
+                    </span>
+                  </div>
+                  
+                  <div>
+                    <div className="flex justify-between items-end mb-3">
+                      <span className="text-white/40 text-xs font-bold uppercase tracking-wider">Proficiency</span>
+                      <span 
+                        className="text-2xl font-body font-light"
+                        style={{ color: skill.color }}
+                      >
+                        {skill.level}%
+                      </span>
+                    </div>
+                    
+                    <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                      <motion.div
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${skill.level}%` }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1.5, ease: "easeOut", delay: 0.3 + (i * 0.1) }}
+                        className="h-full rounded-full"
+                        style={{
+                          backgroundColor: skill.color,
+                          boxShadow: `0 0 10px ${skill.color}80`,
+                        }}
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
             </motion.div>
           ))}
-        </div>
-
-        {/* Floating Icons Background (Optional/Decorative) */}
-        <div className="mt-24 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 opacity-20">
-          {/* We can add logos here or just keep it clean */}
         </div>
       </div>
     </section>
