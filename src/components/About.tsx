@@ -16,7 +16,6 @@ export default function About() {
 
   const stats = [
     { label: "Graduation Year", value: "2025", icon: User },
-    { label: "Projects Built", value: "4+", icon: Layout },
     { label: "Tech Stack", value: "Next.js", icon: Code },
     { label: "Location", value: "Addis Ababa", icon: Layout },
   ];
