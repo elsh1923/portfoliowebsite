@@ -1,15 +1,25 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { 
+  Globe, 
+  Atom, 
+  Code2, 
+  Server, 
+  Database, 
+  Layout, 
+  Cpu
+} from "lucide-react";
 
 const skills = [
-  { name: "Next.js (SSR/SSG)", level: 95, color: "#FFFFFF" },
-  { name: "React.js", level: 92, color: "#61DAFB" },
-  { name: "TypeScript", level: 90, color: "#3178C6" },
-  { name: "Node.js", level: 85, color: "#339933" },
-  { name: "PostgreSQL", level: 88, color: "#4169E1" },
-  { name: "MongoDB", level: 85, color: "#47A248" },
-  { name: "Tailwind CSS", level: 95, color: "#38BDF8" },
+  { name: "Next.js (SSR/SSG)", icon: Globe, color: "#FFFFFF" },
+  { name: "React.js", icon: Atom, color: "#61DAFB" },
+  { name: "TypeScript", icon: Code2, color: "#3178C6" },
+  { name: "Node.js", icon: Server, color: "#339933" },
+  { name: "PostgreSQL", icon: Database, color: "#4169E1" },
+  { name: "MongoDB", icon: Database, color: "#47A248" },
+  { name: "Tailwind CSS", icon: Layout, color: "#38BDF8" },
+  { name: "Full-Stack Dev", icon: Cpu, color: "#A855F7" },
 ];
 
 export default function Skills() {
@@ -45,7 +55,7 @@ export default function Skills() {
           </motion.h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-7xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 max-w-7xl mx-auto">
           {skills.map((skill, i) => (
             <motion.div
               key={skill.name}
@@ -59,7 +69,7 @@ export default function Skills() {
                 className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl blur-xl"
                 style={{ backgroundColor: `${skill.color}15` }}
               />
-              <div className="relative h-full bg-white/[0.02] backdrop-blur-sm border border-white/5 group-hover:border-white/20 p-8 rounded-2xl overflow-hidden shadow-lg transition-all duration-500 hover:-translate-y-2 group-hover:shadow-2xl">
+              <div className="relative h-full bg-white/[0.02] backdrop-blur-sm border border-white/5 group-hover:border-white/20 p-8 rounded-2xl overflow-hidden shadow-lg transition-all duration-500 hover:-translate-y-2 group-hover:shadow-2xl flex flex-col items-center text-center">
                 
                 {/* Decorative glowing orb in corner */}
                 <div 
@@ -67,41 +77,19 @@ export default function Skills() {
                   style={{ backgroundColor: skill.color }}
                 />
 
-                <div className="flex flex-col h-full justify-between relative z-10">
-                  <div className="mb-8">
-                    <span 
-                      className="text-2xl font-heading font-bold text-white transition-colors duration-500"
-                      style={{ textShadow: `0 0 20px ${skill.color}00` }}
-                    >
-                      {skill.name}
-                    </span>
+                <div className="relative z-10 flex flex-col items-center">
+                  <div 
+                    className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 border border-white/10 group-hover:border-white/20 shadow-inner"
+                    style={{ color: skill.color }}
+                  >
+                    <skill.icon size={32} strokeWidth={1.5} />
                   </div>
                   
-                  <div>
-                    <div className="flex justify-between items-end mb-3">
-                      <span className="text-white/40 text-xs font-bold uppercase tracking-wider">Proficiency</span>
-                      <span 
-                        className="text-2xl font-body font-light"
-                        style={{ color: skill.color }}
-                      >
-                        {skill.level}%
-                      </span>
-                    </div>
-                    
-                    <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1.5, ease: "easeOut", delay: 0.3 + (i * 0.1) }}
-                        className="h-full rounded-full"
-                        style={{
-                          backgroundColor: skill.color,
-                          boxShadow: `0 0 10px ${skill.color}80`,
-                        }}
-                      />
-                    </div>
-                  </div>
+                  <h3 
+                    className="text-lg md:text-xl font-heading font-bold text-white transition-colors duration-500 group-hover:text-accent-gold"
+                  >
+                    {skill.name}
+                  </h3>
                 </div>
               </div>
             </motion.div>
