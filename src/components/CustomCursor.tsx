@@ -5,25 +5,23 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export default function CustomCursor() {
   const [isHovering, setIsHovering] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
-  // Use motion values for better performance (avoids re-rendering component on every mousemove)
+  // Use motion values for better performance
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
   // Smooth springs for different layers
   const springConfigDot = { damping: 28, stiffness: 1000, mass: 0.1 };
   const springConfigRing = { damping: 20, stiffness: 200, mass: 0.5 };
-  const springConfigGlow = { damping: 40, stiffness: 60, mass: 2 }; // Lagging magical glow
-  const springConfigText = { damping: 30, stiffness: 120, mass: 1 }; // Text springs
+  const springConfigGlow = { damping: 40, stiffness: 60, mass: 2 };
+  const springConfigText = { damping: 30, stiffness: 120, mass: 1 };
 
   const dotX = useSpring(mouseX, springConfigDot);
   const dotY = useSpring(mouseY, springConfigDot);
   
   const ringX = useSpring(mouseX, springConfigRing);
   const ringY = useSpring(mouseY, springConfigRing);
-
-  const glowX = useSpring(mouseX, springConfigGlow);
-  const glowY = useSpring(mouseY, springConfigGlow);
 
   const textX = useSpring(mouseX, springConfigText);
   const textY = useSpring(mouseY, springConfigText);
@@ -32,11 +30,11 @@ export default function CustomCursor() {
     const updateMousePosition = (e: PointerEvent) => {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
+      if (!isVisible) setIsVisible(true);
     };
 
     const handleMouseOver = (e: PointerEvent) => {
       const target = e.target as HTMLElement;
-      // Check if the target is clickable (a, button, or has cursor-pointer)
       const isClickable =
         window.getComputedStyle(target).cursor === "pointer" ||
         target.tagName.toLowerCase() === "a" ||
@@ -54,7 +52,7 @@ export default function CustomCursor() {
       window.removeEventListener("pointermove", updateMousePosition as EventListener);
       window.removeEventListener("pointerover", handleMouseOver as EventListener);
     };
-  }, [mouseX, mouseY]);
+  }, [mouseX, mouseY, isVisible]);
 
   return (
     <>
@@ -64,11 +62,11 @@ export default function CustomCursor() {
         style={{
           x: textX,
           y: textY,
-          translateX: "30px", // Offset from cursor center
+          translateX: "30px",
           translateY: "-50%",
         }}
         animate={{
-          opacity: isHovering ? 0 : 0.8, // Show always when not hovering
+          opacity: isVisible ? (isHovering ? 0 : 0.8) : 0,
         }}
         transition={{ duration: 0.4 }}
       >
@@ -90,7 +88,7 @@ export default function CustomCursor() {
         }}
         animate={{
           scale: isHovering ? 0 : 1,
-          opacity: 1,
+          opacity: isVisible ? 1 : 0,
         }}
       />
       
@@ -107,6 +105,7 @@ export default function CustomCursor() {
           scale: isHovering ? 1.5 : 1,
           backgroundColor: isHovering ? "rgba(255, 255, 255, 1)" : "rgba(255, 255, 255, 0)",
           borderWidth: isHovering ? "0px" : "1px",
+          opacity: isVisible ? 1 : 0,
         }}
       />
     </>
