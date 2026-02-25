@@ -40,17 +40,7 @@ export default function Navbar() {
           : "bg-transparent py-6"
       }`}
     >
-      <div className="container mx-auto px-6 flex justify-between items-center">
-        <MagneticButton>
-          <motion.a
-            href="#home"
-            whileHover={{ scale: 1.05 }}
-            className="text-2xl font-heading font-extrabold bg-gradient-to-r from-accent-gold to-accent-purple bg-clip-text text-transparent p-2"
-          >
-            ELSHADAY<span className="text-white">.</span>
-          </motion.a>
-        </MagneticButton>
-
+      <div className="container mx-auto px-6 flex justify-center items-center relative">
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-2">
           {navLinks.map((link) => (
@@ -82,7 +72,7 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Toggle */}
-        <div className="md:hidden">
+        <div className="md:hidden absolute right-6">
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="text-white hover:text-accent-gold transition-colors"

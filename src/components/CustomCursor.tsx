@@ -58,22 +58,6 @@ export default function CustomCursor() {
 
   return (
     <>
-      {/* Gemini Style Glow / Aura */}
-      <motion.div
-        className="fixed top-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-accent-purple/40 via-accent-gold/20 to-blue-500/30 rounded-full blur-[100px] pointer-events-none z-[9997] hidden md:block"
-        style={{
-          x: glowX,
-          y: glowY,
-          translateX: "-50%",
-          translateY: "-50%",
-        }}
-        animate={{
-          scale: isHovering ? 1.2 : 1,
-          opacity: isHovering ? 0.2 : 0.6,
-        }}
-        transition={{ duration: 0.8 }}
-      />
-
       {/* Watermark Text */}
       <motion.div
         className="fixed top-0 left-0 pointer-events-none z-[9998] flex whitespace-nowrap"
