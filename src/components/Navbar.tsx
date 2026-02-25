@@ -1,16 +1,27 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Menu, X, Github, Linkedin, Twitter } from "lucide-react";
+import { 
+  Menu, 
+  X, 
+  Github, 
+  Linkedin, 
+  Twitter,
+  Home,
+  User,
+  Code2,
+  Briefcase,
+  Mail
+} from "lucide-react";
 import { useState, useEffect } from "react";
 import MagneticButton from "./MagneticButton";
 
 const navLinks = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Skills", href: "#skills" },
-  { name: "Portfolio", href: "#portfolio" },
-  { name: "Contact", href: "#contact" },
+  { name: "Home", href: "#home", icon: Home },
+  { name: "About", href: "#about", icon: User },
+  { name: "Skills", href: "#skills", icon: Code2 },
+  { name: "Portfolio", href: "#portfolio", icon: Briefcase },
+  { name: "Contact", href: "#contact", icon: Mail },
 ];
 
 const socialLinks = [
@@ -48,8 +59,9 @@ export default function Navbar() {
               <motion.a
                 href={link.href}
                 whileHover={{ color: "#F9A826" }}
-                className="text-white/80 hover:text-accent-gold font-medium transition-colors px-4 py-2"
+                className="text-white/80 hover:text-accent-gold font-medium transition-colors px-4 py-2 flex items-center gap-2"
               >
+                <link.icon size={18} />
                 {link.name}
               </motion.a>
             </MagneticButton>
@@ -95,8 +107,9 @@ export default function Navbar() {
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="text-xl font-heading text-white/80 hover:text-accent-gold"
+                className="text-xl font-heading text-white/80 hover:text-accent-gold flex items-center gap-4"
               >
+                <link.icon size={24} className="text-accent-gold" />
                 {link.name}
               </a>
             ))}

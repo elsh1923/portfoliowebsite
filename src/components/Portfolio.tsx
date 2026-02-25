@@ -204,14 +204,12 @@ export default function Portfolio() {
         </div>
 
         <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <AnimatePresence mode="popLayout">
             {filteredProjects.map((project) => (
               <ProjectCard 
                 key={project.id} 
                 project={project} 
               />
             ))}
-          </AnimatePresence>
         </motion.div>
       </div>
     </section>
