@@ -17,8 +17,7 @@ import { useState, useEffect } from "react";
 import MagneticButton from "./MagneticButton";
 
 const navLinks = [
-  { name: "Home", href: "#home", icon: Home },
-  { name: "About", href: "#about", icon: User },
+  { name: "Home", href: "#about", icon: Home },
   { name: "Skills", href: "#skills", icon: Code2 },
   { name: "Portfolio", href: "#portfolio", icon: Briefcase },
   { name: "Contact", href: "#contact", icon: Mail },
