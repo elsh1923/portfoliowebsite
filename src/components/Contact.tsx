@@ -1,9 +1,25 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Send, Phone, Mail, MapPin } from "lucide-react";
+import { Send, Phone, Mail, MapPin, CheckCircle2, AlertCircle } from "lucide-react";
+import { useActionState, useEffect, useRef } from "react";
+import { sendEmail } from "@/app/actions";
+
+const initialState = {
+  success: false,
+  message: "",
+};
 
 export default function Contact() {
+  const [state, formAction, isPending] = useActionState(sendEmail, initialState);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  useEffect(() => {
+    if (state.success && formRef.current) {
+      formRef.current.reset();
+    }
+  }, [state]);
+
   return (
     <section id="contact" className="py-32 bg-primary relative overflow-hidden">
       {/* Background Decor */}
@@ -38,9 +54,9 @@ export default function Contact() {
 
             <div className="space-y-8">
               {[
-                { icon: Mail, label: "Email Me", value: "elshadaydagne480@gmail.com", color: "from-accent-gold to-accent-purple" },
-                { icon: Phone, label: "Call Me", value: "+251927617474", color: "from-accent-purple to-accent-gold" },
-                { icon: MapPin, label: "Location", value: "Addis Ababa, Ethiopia", color: "from-white/20 to-white/5" }
+                { icon: Mail, label: "Email Me", value: "elshadaydagne480@gmail.com" },
+                { icon: Phone, label: "Call Me", value: "+251927617474" },
+                { icon: MapPin, label: "Location", value: "Addis Ababa, Ethiopia" }
               ].map((item, i) => (
                 <motion.div 
                   key={item.label}
@@ -72,12 +88,14 @@ export default function Contact() {
           >
             <div className="absolute inset-0 bg-gradient-to-tr from-accent-purple/10 to-accent-gold/10 rounded-[2rem] blur-2xl transform scale-110 -z-10" />
             <div className="bg-secondary/40 backdrop-blur-2xl p-10 md:p-12 rounded-[2rem] border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)]">
-              <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
+              <form ref={formRef} action={formAction} className="space-y-8">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
                   <div className="space-y-3 group/input">
                     <label className="text-xs font-bold text-white/50 uppercase tracking-[0.2em] ml-2 group-focus-within/input:text-accent-gold transition-colors">Name</label>
                     <input
+                      name="name"
                       type="text"
+                      required
                       placeholder="John Doe"
                       className="w-full px-6 py-4 bg-white/[0.03] border-b-2 border-transparent focus:border-accent-gold focus:bg-white/[0.05] rounded-xl outline-none transition-all placeholder:text-white/20 font-body text-white"
                     />
@@ -85,7 +103,9 @@ export default function Contact() {
                   <div className="space-y-3 group/input">
                     <label className="text-xs font-bold text-white/50 uppercase tracking-[0.2em] ml-2 group-focus-within/input:text-accent-gold transition-colors">Email</label>
                     <input
+                      name="email"
                       type="email"
+                      required
                       placeholder="hello@example.com"
                       className="w-full px-6 py-4 bg-white/[0.03] border-b-2 border-transparent focus:border-accent-gold focus:bg-white/[0.05] rounded-xl outline-none transition-all placeholder:text-white/20 font-body text-white"
                     />
@@ -94,7 +114,9 @@ export default function Contact() {
                 <div className="space-y-3 group/input">
                   <label className="text-xs font-bold text-white/50 uppercase tracking-[0.2em] ml-2 group-focus-within/input:text-accent-gold transition-colors">Subject</label>
                   <input
+                    name="subject"
                     type="text"
+                    required
                     placeholder="Project Inquiry"
                     className="w-full px-6 py-4 bg-white/[0.03] border-b-2 border-transparent focus:border-accent-gold focus:bg-white/[0.05] rounded-xl outline-none transition-all placeholder:text-white/20 font-body text-white"
                   />
@@ -102,19 +124,41 @@ export default function Contact() {
                 <div className="space-y-3 group/input">
                   <label className="text-xs font-bold text-white/50 uppercase tracking-[0.2em] ml-2 group-focus-within/input:text-accent-gold transition-colors">Message</label>
                   <textarea
+                    name="message"
                     rows={4}
+                    required
                     placeholder="Tell me about your vision..."
                     className="w-full px-6 py-4 bg-white/[0.03] border-b-2 border-transparent focus:border-accent-gold focus:bg-white/[0.05] rounded-xl outline-none transition-all placeholder:text-white/20 resize-none font-body text-white"
                   />
                 </div>
                 
+                {state.message && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className={`flex items-center gap-3 p-4 rounded-xl ${
+                      state.success ? "bg-green-500/10 text-green-400 border border-green-500/20" : "bg-red-500/10 text-red-400 border border-red-500/20"
+                    }`}
+                  >
+                    {state.success ? <CheckCircle2 size={18} /> : <AlertCircle size={18} />}
+                    <span className="text-sm font-medium">{state.message}</span>
+                  </motion.div>
+                )}
+
                 <motion.button
-                  whileHover={{ scale: 1.02, backgroundColor: "#fff", color: "#0A0B10" }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full py-5 bg-accent-gold text-primary font-bold tracking-wide uppercase rounded-xl flex items-center justify-center gap-3 transition-all shadow-[0_10px_40px_rgba(249,168,38,0.2)] hover:shadow-[0_10px_60px_rgba(249,168,38,0.4)] border border-transparent hover:border-white relative overflow-hidden group"
+                  type="submit"
+                  disabled={isPending}
+                  whileHover={!isPending ? { scale: 1.02, backgroundColor: "#fff", color: "#0A0B10" } : {}}
+                  whileTap={!isPending ? { scale: 0.98 } : {}}
+                  className={`w-full py-5 font-bold tracking-wide uppercase rounded-xl flex items-center justify-center gap-3 transition-all border border-transparent relative overflow-hidden group ${
+                    isPending 
+                      ? "bg-white/10 text-white/40 cursor-not-allowed" 
+                      : "bg-accent-gold text-primary shadow-[0_10px_40px_rgba(249,168,38,0.2)] hover:shadow-[0_10px_60px_rgba(249,168,38,0.4)] hover:border-white"
+                  }`}
                 >
                   <span className="relative z-10 flex items-center gap-3">
-                    Send Message <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                    {isPending ? "Sending..." : "Send Message"} 
+                    {!isPending && <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />}
                   </span>
                 </motion.button>
               </form>
