@@ -24,8 +24,8 @@ export default function About() {
   return (
     <section id="about" ref={containerRef} className="py-32 relative overflow-hidden">
       {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-b from-accent-purple/5 to-transparent blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-gradient-to-t from-accent-gold/5 to-transparent blur-[100px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-accent-purple/5 blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-accent-gold/5 blur-[100px] pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
@@ -42,10 +42,9 @@ export default function About() {
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
               className="relative group preserve-3d"
             >
-              <div className="absolute -inset-8 bg-gradient-to-tr from-accent-gold to-accent-purple rounded-[2rem] blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-700" />
+              <div className="absolute -inset-8 bg-accent-gold/10 rounded-[2rem] blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-700" />
               <div className="relative bg-white/[0.02] backdrop-blur-xl border border-white/10 p-4 rounded-[2rem] overflow-hidden shadow-2xl transition-transform duration-700 hover:rotate-y-[5deg] hover:rotate-x-[5deg]">
                 <div className="aspect-[4/5] relative overflow-hidden rounded-2xl bg-primary/50">
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent z-10" />
                   <img 
                     src="/profile.jpg" 
                     alt="Profile" 
@@ -88,7 +87,7 @@ export default function About() {
               
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold mb-8 leading-[1.1]">
                 Crafting Digital <br/>
-                <span className="bg-gradient-to-r from-accent-purple to-accent-gold bg-clip-text text-transparent italic pr-4">Excellence</span>
+                <span className="text-accent-gold italic font-light pr-4">Excellence</span>
               </h2>
               
               <p className="text-xl text-white/60 mb-12 font-body leading-relaxed max-w-xl font-light">

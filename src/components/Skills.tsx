@@ -51,7 +51,7 @@ export default function Skills() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold tracking-tight"
           >
-            Expertise & <span className="bg-gradient-to-r from-accent-purple to-accent-gold bg-clip-text text-transparent italic pr-2">Skills</span>
+            Expertise & <span className="text-accent-gold italic pr-2">Skills</span>
           </motion.h2>
         </div>
 
@@ -66,8 +66,7 @@ export default function Skills() {
               className="group relative"
             >
               <div 
-                className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl blur-xl"
-                style={{ backgroundColor: `${skill.color}15` }}
+                className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl blur-xl"
               />
               <div className="relative h-full bg-white/[0.02] backdrop-blur-sm border border-white/5 group-hover:border-white/20 p-8 rounded-2xl overflow-hidden shadow-lg transition-all duration-500 hover:-translate-y-2 group-hover:shadow-2xl flex flex-col items-center text-center">
                 

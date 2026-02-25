@@ -7,8 +7,8 @@ export default function Contact() {
   return (
     <section id="contact" className="py-32 bg-primary relative overflow-hidden">
       {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-accent-gold/5 lg:from-accent-gold/10 to-transparent blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-accent-purple/10 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-accent-gold/5 blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-accent-purple/5 blur-[150px] rounded-full pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
@@ -28,7 +28,7 @@ export default function Contact() {
               </span>
             </div>
 
-            <h2 className="text-3xl md:text-5xl lg:text-7xl font-heading font-extrabold mb-6 md:mb-8 leading-[1.1] tracking-tight">
+            <h2 className="text-3xl md:text-5xl lg:text-7xl font-heading font-extrabold mb-6 md:mb-8 leading-[1.1] tracking-tight text-white">
               Let's Create <br/> Something <span className="text-accent-gold italic font-light font-body">Extraordinary.</span>
             </h2>
             
@@ -50,9 +50,8 @@ export default function Contact() {
                   transition={{ delay: 0.2 + (i * 0.1), duration: 0.5 }}
                   className="flex items-center gap-6 group cursor-pointer"
                 >
-                  <div className="relative flex items-center justify-center w-16 h-16 rounded-2xl overflow-hidden bg-white/5 border border-white/10 group-hover:border-white/30 transition-colors duration-500">
-                    <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-20 transition-opacity duration-500`} />
-                    <item.icon size={24} className="text-white/70 group-hover:text-white transition-colors duration-500 relative z-10" />
+                  <div className="relative flex items-center justify-center w-16 h-16 rounded-2xl overflow-hidden bg-white/5 border border-white/10 group-hover:border-accent-gold/30 transition-colors duration-500">
+                    <item.icon size={24} className="text-white/70 group-hover:text-accent-gold transition-colors duration-500 relative z-10" />
                   </div>
                   <div>
                     <p className="text-white/40 text-xs font-bold uppercase tracking-[0.2em] mb-1">{item.label}</p>
@@ -112,7 +111,7 @@ export default function Contact() {
                 <motion.button
                   whileHover={{ scale: 1.02, backgroundColor: "#fff", color: "#0A0B10" }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full py-5 bg-gradient-to-r from-accent-gold to-accent-purple text-primary font-bold tracking-wide uppercase rounded-xl flex items-center justify-center gap-3 transition-all shadow-[0_10px_40px_rgba(249,168,38,0.3)] hover:shadow-[0_10px_60px_rgba(249,168,38,0.5)] border border-transparent hover:border-white relative overflow-hidden group"
+                  className="w-full py-5 bg-accent-gold text-primary font-bold tracking-wide uppercase rounded-xl flex items-center justify-center gap-3 transition-all shadow-[0_10px_40px_rgba(249,168,38,0.2)] hover:shadow-[0_10px_60px_rgba(249,168,38,0.4)] border border-transparent hover:border-white relative overflow-hidden group"
                 >
                   <span className="relative z-10 flex items-center gap-3">
                     Send Message <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
