@@ -15,7 +15,7 @@ export default function About() {
   const y2 = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"]);
 
   const stats = [
-    { label: "Graduation Year", value: "2025", icon: User },
+    { label: "Graduation Year", value: "2026", icon: User },
     { label: "Tech Stack", value: "Next.js", icon: Code },
     { label: "Location", value: "Addis Ababa", icon: Layout },
   ];
