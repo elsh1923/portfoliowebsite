@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { User, Code, Layout } from "lucide-react";
 import { useRef } from "react";
+import Image from "next/image";
 
 export default function About() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -44,9 +45,12 @@ export default function About() {
               <div className="absolute -inset-8 bg-accent-gold/10 rounded-[2rem] blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-700" />
               <div className="relative bg-white/[0.02] backdrop-blur-xl border border-white/10 p-4 rounded-[2rem] overflow-hidden shadow-2xl transition-transform duration-700 hover:rotate-y-[5deg] hover:rotate-x-[5deg]">
                 <div className="aspect-[4/5] relative overflow-hidden rounded-2xl bg-primary/50">
-                  <img 
+                  <Image 
                     src="/profile.jpg" 
                     alt="Profile" 
+                    width={500}
+                    height={625}
+                    priority
                     className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
                   />
                   

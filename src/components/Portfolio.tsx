@@ -3,6 +3,7 @@
 import { motion, AnimatePresence, useMotionTemplate, useMotionValue } from "framer-motion";
 import { useState, MouseEvent } from "react";
 import { ExternalLink, Github, X } from "lucide-react";
+import Image from "next/image";
 
 const projects = [
   {
@@ -106,9 +107,11 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
       />
       
       <div className="relative aspect-[16/10] overflow-hidden rounded-t-[2rem]">
-        <motion.img
+        <Image
           src={project.image}
           alt={project.title}
+          width={800}
+          height={500}
           className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

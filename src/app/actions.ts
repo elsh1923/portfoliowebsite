@@ -12,7 +12,7 @@ export async function sendEmail(prevState: any, formData: FormData) {
   }
 
   // Simulate server processing delay
-  await new Promise((resolve) => setTimeout(resolve, 2000));
+  await new Promise((resolve) => setTimeout(resolve, 800));
 
   // Log the received data (in a real app, you'd send an email here)
   console.log("Contact Form Submission Received:", { name, email, subject, message });
