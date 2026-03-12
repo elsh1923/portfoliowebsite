@@ -13,7 +13,7 @@ const projects = [
     image: "/wegie-thumb.png",
     description: "An AI-powered tool that automatically generates accurate Amharic subtitles for videos and audio in seconds.",
     problem: "Traditional tools lack support for Amharic's complex script, making manual transcription slow and error-prone.",
-    tags: ["Next.js", "AI", "Amharic", "Full-Stack"],
+    tags: ["Next.js", "Python", "AI", "Amharic", "Full-Stack"],
     link: "https://wegie-ai-fz1a.vercel.app/",
     type: "Full-Stack"
   },
