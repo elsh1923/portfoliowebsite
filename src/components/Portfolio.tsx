@@ -11,7 +11,8 @@ const projects = [
     title: "Wegie ወጌ - AI",
     category: "AI Platform",
     image: "/wegie-thumb.png",
-    description: "An AI-powered tool that automatically generates accurate Amharic subtitles for videos and audio in seconds. Leveraging advanced language processing for precise Amharic transcriptions.",
+    description: "An AI-powered tool that automatically generates accurate Amharic subtitles for videos and audio in seconds.",
+    problem: "Traditional tools lack support for Amharic's complex script, making manual transcription slow and error-prone.",
     tags: ["Next.js", "AI", "Amharic", "Full-Stack"],
     link: "https://wegie-ai-fz1a.vercel.app/",
     type: "Full-Stack"
@@ -21,7 +22,8 @@ const projects = [
     title: "NextJemari",
     category: "Knowledge Hub",
     image: "/nextjemari-thumb-v2.png",
-    description: "A full-stack knowledge-sharing platform where users can create, publish, and manage MDX-based technical articles. Features authentication, user profiles, and full-text search.",
+    description: "A full-stack knowledge-sharing platform where users can create and manage MDX-based technical articles.",
+    problem: "Developers often struggle to find a centralized, SEO-friendly space for sharing deep technical content with MDX.",
     tags: ["Next.js", "PostgreSQL", "Prisma", "TypeScript"],
     link: "https://next-jemari-sl3l.vercel.app/",
     type: "Full-Stack"
@@ -31,7 +33,8 @@ const projects = [
     title: "Agazian Geʽez Learning",
     category: "Educational",
     image: "/agazian-thumb.png",
-    description: "Built a Geʽez learning platform with authentication, admin dashboard, and quiz system. Implemented user roles for managing courses.",
+    description: "A Geʽez learning platform with an interactive quiz system and admin dashboard.",
+    problem: "Ge'ez, an ancient liturgical language, had very few digital platforms for interactive and remote learning.",
     tags: ["Next.js", "MongoDB", "Tailwind CSS"],
     link: "https://geez-learning.vercel.app/",
     type: "Full-Stack"
@@ -41,7 +44,8 @@ const projects = [
     title: "eBook Library",
     category: "Online Library",
     image: "/ebook-library-thumb.png",
-    description: "A modern eBook platform for reading and managing digital books online. Optimized performance using server-side rendering and lazy loading.",
+    description: "A modern eBook platform for reading and managing digital books online with SSR optimization.",
+    problem: "Online reading experiences are often cluttered; this project focuses on a clean, performance-first minimalist UI.",
     tags: ["Next.js", "SSR", "Performance"],
     link: "https://ebook-axds.vercel.app/",
     type: "Full-Stack"
@@ -51,7 +55,8 @@ const projects = [
     title: "Sisay Begena",
     category: "Frontend Dev",
     image: "/sisay-begena-thumb.png",
-    description: "Designed and implemented a responsive, user-friendly About page for Sisay Begena Musical Instruments Training Institute.",
+    description: "Responsive and user-friendly About page for a renowned musical instrument training institute.",
+    problem: "The institute needed a modern digital bridge to attract younger students interested in traditional music.",
     tags: ["React.js", "Tailwind CSS"],
     link: "https://sisaybegenaethiopia.com/am/about",
     type: "Frontend"
@@ -61,7 +66,8 @@ const projects = [
     title: "Canaan Hub",
     category: "Faith Platform",
     image: "/canaan-thumb.png",
-    description: "An Orthodox Christian faith learning hub featuring structured video lessons, digital books, and a community Q&A system. Built with Next.js and high-performance backend.",
+    description: "A faith learning hub featuring structured video lessons, digital books, and a community Q&A system.",
+    problem: "Access to high-quality, structured religious education materials in a modern mobile-friendly format was limited.",
     tags: ["Next.js", "Video Streaming", "Q&A System"],
     link: "https://kenean-2pmd.vercel.app/",
     type: "Full-Stack"
@@ -71,7 +77,8 @@ const projects = [
     title: "Enese Trading",
     category: "Business Site",
     image: "/enese-trading-thumb.jpg",
-    description: "A professional business website for Enese Trading company, featuring modern UI design, responsive layouts, and optimized SEO performance.",
+    description: "Professional business website featuring modern UI design and optimized SEO performance.",
+    problem: "Traditional trading businesses lacked a professional digital storefront to compete in the modern market.",
     tags: ["Next.js", "Tailwind CSS", "SEO"],
     link: "https://enese-trading.vercel.app/",
     type: "Frontend"
@@ -146,7 +153,21 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
           </div>
         </div>
         
-        <div className="flex flex-wrap gap-2 mt-6">
+        <p className="text-white/60 text-sm mb-6 line-clamp-2 leading-relaxed">
+          {project.description}
+        </p>
+
+        <div className="mb-8 p-4 bg-white/5 rounded-2xl border border-white/5 group-hover:border-accent-gold/20 transition-colors">
+          <h4 className="text-accent-gold/60 text-[10px] font-bold uppercase tracking-[0.2em] mb-2 flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent-gold/40" />
+            Problem Solved
+          </h4>
+          <p className="text-white/40 text-xs leading-relaxed italic">
+            &quot;{project.problem}&quot;
+          </p>
+        </div>
+        
+        <div className="flex flex-wrap gap-2">
           {project.tags.map((tag) => (
             <span key={tag} className="px-3 py-1 bg-white/5 border border-white/10 text-white/50 rounded-full text-xs font-medium">
               {tag}
