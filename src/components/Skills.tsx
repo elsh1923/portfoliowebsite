@@ -21,7 +21,6 @@ const skills = [
   { name: "PostgreSQL", icon: Database, color: "#4169E1" },
   { name: "MongoDB", icon: Database, color: "#47A248" },
   { name: "Tailwind CSS", icon: Layout, color: "#38BDF8" },
-  { name: "Full-Stack Dev", icon: Cpu, color: "#A855F7" },
 ];
 
 export default function Skills() {
