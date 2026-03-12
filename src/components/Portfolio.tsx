@@ -8,6 +8,16 @@ import Image from "next/image";
 const projects = [
   {
     id: 1,
+    title: "Wegie ወጌ - AI",
+    category: "AI Platform",
+    image: "/wegie-ai-thumb.png",
+    description: "An AI-powered tool that automatically generates accurate Amharic subtitles for videos and audio in seconds. Leveraging advanced language processing for precise Amharic transcriptions.",
+    tags: ["Next.js", "AI", "Amharic", "Full-Stack"],
+    link: "https://wegie-ai-fz1a.vercel.app/",
+    type: "Full-Stack"
+  },
+  {
+    id: 2,
     title: "NextJemari",
     category: "Knowledge Hub",
     image: "/nextjemari-thumb-v2.png",
@@ -17,7 +27,7 @@ const projects = [
     type: "Full-Stack"
   },
   {
-    id: 2,
+    id: 3,
     title: "Agazian Geʽez Learning",
     category: "Educational",
     image: "/agazian-thumb.png",
@@ -27,7 +37,7 @@ const projects = [
     type: "Full-Stack"
   },
   {
-    id: 3,
+    id: 4,
     title: "eBook Library",
     category: "Online Library",
     image: "/ebook-library-thumb.png",
@@ -37,7 +47,7 @@ const projects = [
     type: "Full-Stack"
   },
   {
-    id: 4,
+    id: 5,
     title: "Sisay Begena",
     category: "Frontend Dev",
     image: "/sisay-begena-thumb.png",
@@ -47,7 +57,7 @@ const projects = [
     type: "Frontend"
   },
   {
-    id: 5,
+    id: 6,
     title: "Canaan Hub",
     category: "Faith Platform",
     image: "/canaan-thumb.png",
@@ -57,7 +67,7 @@ const projects = [
     type: "Full-Stack"
   },
   {
-    id: 6,
+    id: 7,
     title: "Enese Trading",
     category: "Business Site",
     image: "/enese-trading-thumb.jpg",
