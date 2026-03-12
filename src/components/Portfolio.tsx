@@ -10,7 +10,7 @@ const projects = [
     id: 1,
     title: "Wegie ወጌ - AI",
     category: "AI Platform",
-    image: "/wegie-ai-thumb.png",
+    image: "/wegie-thumb.png",
     description: "An AI-powered tool that automatically generates accurate Amharic subtitles for videos and audio in seconds. Leveraging advanced language processing for precise Amharic transcriptions.",
     tags: ["Next.js", "AI", "Amharic", "Full-Stack"],
     link: "https://wegie-ai-fz1a.vercel.app/",
