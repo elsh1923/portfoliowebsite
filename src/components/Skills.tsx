@@ -8,13 +8,15 @@ import {
   Server, 
   Database, 
   Layout, 
-  Cpu
+  Cpu,
+  Terminal
 } from "lucide-react";
 
 const skills = [
   { name: "Next.js (SSR/SSG)", icon: Globe, color: "#FFFFFF" },
   { name: "React.js", icon: Atom, color: "#61DAFB" },
   { name: "TypeScript", icon: Code2, color: "#3178C6" },
+  { name: "Python", icon: Terminal, color: "#3776AB" },
   { name: "Node.js", icon: Server, color: "#339933" },
   { name: "PostgreSQL", icon: Database, color: "#4169E1" },
   { name: "MongoDB", icon: Database, color: "#47A248" },
