@@ -83,6 +83,17 @@ const projects = [
     link: "https://enese-trading.vercel.app/",
     type: "Frontend"
   },
+  {
+    id: 8,
+    title: "Adwa AI Assistant",
+    category: "AI Platform",
+    image: "/image_2026-03-16_04-25-20.png",
+    description: "A state-of-the-art educational platform that brings the Battle of Adwa to life using RAG-powered AI. Chat with Emperor Menelik II, Empress Taytu Betul, and other historical leaders, explore AI-driven story modes, and test knowledge through dynamic quizzes.",
+    problem: "The Battle of Adwa — Africa's greatest military victory — lacked a modern, immersive digital experience. There was no platform where learners could converse with historical figures, explore tactical strategies, and engage with the full depth of Ethiopian history through AI.",
+    tags: ["React", "TypeScript", "Node.js", "Groq AI", "RAG", "Full-Stack"],
+    link: "https://adwa-gamma.vercel.app/",
+    type: "Full-Stack"
+  },
 ];
 
 const categories = ["All", "Full-Stack", "Frontend"];
