@@ -118,6 +118,9 @@ export default function Contact() {
             className="relative"
           >
             <div className="bg-card p-10 md:p-12 rounded-[2rem] border border-white/10">
+              <p className="text-muted text-sm mb-8 leading-relaxed">
+                Fill in the form below and I&apos;ll get back to you within a day.
+              </p>
               <form ref={formRef} action={formAction} className="space-y-8">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
                   <div className="space-y-3 group/input">

@@ -16,7 +16,6 @@ export default function About() {
   const y2 = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"]);
 
   const stats = [
-    { label: "Graduation Year", value: "2026", icon: User },
     { label: "Tech Stack", value: "Next.js", icon: Code },
     { label: "Location", value: "Addis Ababa", icon: Layout },
   ];
@@ -77,7 +76,7 @@ export default function About() {
               </h2>
               
               <p className="text-xl text-muted mb-12 font-body leading-relaxed max-w-xl font-light">
-                Hello! I'm Elshaday Dagne Demessie, a passionate Full-Stack Developer with a strong foundation in building modern, responsive, and scalable web applications. Currently studying Computer Science at Addis Ababa University.
+                Hello! I'm Elshaday Dagne Demessie, a passionate Full-Stack Developer with a strong foundation in building modern, responsive, and scalable web applications.
               </p>
 
               <div className="grid grid-cols-2 gap-x-8 gap-y-12 mb-14">
