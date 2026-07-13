@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { User, Code, Layout } from "lucide-react";
+import { User, Code, Layout, Download, FileText } from "lucide-react";
 import { useRef } from "react";
 import Image from "next/image";
 
@@ -22,11 +22,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about" ref={containerRef} className="py-32 relative overflow-hidden">
-      {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-accent-purple/5 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-accent-gold/5 blur-[100px] pointer-events-none" />
-
+    <section id="about" ref={containerRef} className="py-32 relative overflow-hidden bg-background text-foreground">
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
           
@@ -42,28 +38,16 @@ export default function About() {
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
               className="relative group preserve-3d"
             >
-              <div className="absolute -inset-8 bg-accent-gold/10 rounded-[2rem] blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-700" />
-              <div className="relative bg-white/[0.02] backdrop-blur-xl border border-white/10 p-4 rounded-[2rem] overflow-hidden shadow-2xl transition-transform duration-700 hover:rotate-y-[5deg] hover:rotate-x-[5deg]">
-                <div className="aspect-[4/5] relative overflow-hidden rounded-2xl bg-primary/50">
+              <div className="relative bg-card border border-white/10 p-4 rounded-[2rem] overflow-hidden">
+                <div className="aspect-[4/5] relative overflow-hidden rounded-2xl bg-background">
                   <Image 
-                    src="/profile.jpg" 
-                    alt="Profile" 
+                    src={`/profile.jpg?v=${Date.now()}`}
+                    alt="Elshaday Dagne Demessie - Full-Stack Developer" 
                     width={500}
                     height={625}
                     priority
-                    className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
-                  />
-                  
-                  {/* Floating Elements on Image */}
-                  <motion.div 
-                    animate={{ y: [0, -10, 0] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute top-10 -right-4 w-24 h-24 bg-accent-gold/20 rounded-full blur-xl z-20"
-                  />
-                  <motion.div 
-                    animate={{ y: [0, 15, 0] }}
-                    transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                    className="absolute bottom-20 -left-6 w-32 h-32 bg-accent-purple/20 rounded-full blur-xl z-20"
+                    unoptimized
+                    className="w-full h-full object-cover grayscale-[10%] transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105"
                   />
                 </div>
               </div>
@@ -81,23 +65,22 @@ export default function About() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8 }}
             >
-              <div className="flex items-center gap-4 mb-4">
+              <div className="flex items-center gap-4 mb-6">
                 <div className="h-[1px] w-12 bg-accent-gold" />
                 <span className="text-accent-gold font-bold tracking-[0.2em] uppercase text-sm">
                   About Me
                 </span>
               </div>
-              
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold mb-8 leading-[1.1]">
-                Crafting Digital <br/>
-                <span className="text-accent-gold italic font-light pr-4">Excellence</span>
+
+              <h2 className="text-5xl md:text-6xl lg:text-8xl font-heading font-extrabold mb-8 leading-[1.05] tracking-tight">
+                About <span className="text-accent-gold italic font-light">Me</span>
               </h2>
               
-              <p className="text-xl text-white/60 mb-12 font-body leading-relaxed max-w-xl font-light">
+              <p className="text-xl text-muted mb-12 font-body leading-relaxed max-w-xl font-light">
                 Hello! I'm Elshaday Dagne Demessie, a passionate Full-Stack Developer with a strong foundation in building modern, responsive, and scalable web applications. Currently studying Computer Science at Addis Ababa University.
               </p>
 
-              <div className="grid grid-cols-2 gap-x-8 gap-y-12">
+              <div className="grid grid-cols-2 gap-x-8 gap-y-12 mb-14">
                 {stats.map((stat, i) => (
                   <motion.div
                     key={stat.label}
@@ -107,17 +90,46 @@ export default function About() {
                     transition={{ delay: i * 0.1 + 0.3, duration: 0.8, ease: "easeOut" }}
                     className="flex flex-col relative group"
                   >
-                    <div className="absolute -left-4 top-0 w-1 h-full bg-white/5 group-hover:bg-accent-gold transition-colors duration-500 rounded-full origin-bottom scale-y-0 group-hover:scale-y-100" />
+                    <div className="absolute -left-4 top-0 w-1 h-full bg-white/5 group-hover:bg-white/20 transition-colors duration-500 rounded-full origin-bottom scale-y-0 group-hover:scale-y-100" />
                     
-                    <span className="text-4xl md:text-5xl font-heading font-extrabold text-white mb-2 tracking-tight group-hover:text-accent-gold transition-colors duration-500">
+                    <span className="text-4xl md:text-5xl font-heading font-extrabold text-foreground mb-2 tracking-tight transition-colors duration-500">
                       {stat.value}
                     </span>
-                    <span className="text-white/40 font-medium uppercase tracking-[0.15em] text-xs">
+                    <span className="text-muted font-medium uppercase tracking-[0.15em] text-xs">
                       {stat.label}
                     </span>
                   </motion.div>
                 ))}
               </div>
+
+              {/* Download CV */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5, duration: 0.8 }}
+                className="flex flex-col sm:flex-row items-start sm:items-center gap-4"
+              >
+                <a
+                  href="/Elshaday-Dagne-Demessie-websiteCvFeb2026.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download="Elshaday-Dagne-Demessie-CV.pdf"
+                  className="group inline-flex items-center gap-3 px-8 py-4 bg-accent-gold text-background font-bold rounded-full transition-all duration-300 hover:bg-accent-gold/90 text-sm uppercase tracking-widest"
+                >
+                  <Download size={18} className="group-hover:-translate-y-0.5 transition-transform duration-300" />
+                  Download CV
+                </a>
+                <a
+                  href="/Elshaday-Dagne-Demessie-websiteCvFeb2026.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-3 px-8 py-4 border border-white/10 text-foreground font-bold rounded-full transition-all duration-300 hover:border-white/30 hover:bg-white/5 text-sm uppercase tracking-widest"
+                >
+                  <FileText size={18} className="text-muted group-hover:text-foreground transition-colors" />
+                  View PDF
+                </a>
+              </motion.div>
             </motion.div>
           </motion.div>
           

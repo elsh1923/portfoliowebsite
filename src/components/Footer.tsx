@@ -30,10 +30,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-primary pt-24 pb-12 overflow-hidden border-t border-white/5">
-      {/* Background Decor */}
-      <div className="absolute top-0 right-1/4 w-[400px] h-[400px] bg-accent-gold/5 blur-[120px] rounded-full pointer-events-none" />
-      
+    <footer className="relative bg-background pt-24 pb-12 overflow-hidden border-t border-white/10">
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
           
@@ -44,15 +41,15 @@ export default function Footer() {
               viewport={{ once: true }}
               className="mb-6"
             >
-              <span className="text-3xl font-heading font-extrabold tracking-tighter">
+              <span className="text-3xl font-heading font-extrabold tracking-tighter text-foreground">
                 ELSHADAY<span className="text-accent-gold">.</span>
               </span>
             </motion.div>
-            <p className="text-white/50 max-w-sm font-body font-light leading-relaxed mb-8">
+            <p className="text-muted max-w-sm font-body font-light leading-relaxed mb-8">
               A passionate Full-Stack Developer specializing in crafting immersive, high-performance digital experiences. 
             </p>
             
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 text-white/40 text-xs sm:text-sm font-medium tracking-widest uppercase">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 text-muted text-xs sm:text-sm font-medium tracking-widest uppercase">
               <div className="flex items-center gap-3">
                 <span className="relative flex h-3 w-3">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-gold opacity-75"></span>
@@ -66,11 +63,11 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-white uppercase tracking-[0.2em] text-sm font-bold mb-6">Navigation</h4>
+            <h4 className="text-foreground uppercase tracking-[0.2em] text-sm font-bold mb-6">Navigation</h4>
             <ul className="space-y-4">
               {["Home", "About", "Skills", "Portfolio"].map((item) => (
                 <li key={item}>
-                  <a href={`#${item.toLowerCase()}`} className="text-white/60 hover:text-accent-gold transition-colors block w-fit">
+                  <a href={`#${item.toLowerCase()}`} className="text-muted hover:text-accent-gold transition-colors block w-fit">
                     {item}
                   </a>
                 </li>
@@ -79,7 +76,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-white uppercase tracking-[0.2em] text-sm font-bold mb-6">Socials</h4>
+            <h4 className="text-foreground uppercase tracking-[0.2em] text-sm font-bold mb-6">Socials</h4>
             <ul className="space-y-4">
               {[
                 { name: "GitHub", href: "https://github.com/elsh1923", icon: Github },
@@ -90,7 +87,7 @@ export default function Footer() {
                     href={social.href} 
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white/60 hover:text-accent-gold transition-colors flex items-center gap-3 w-fit group"
+                    className="text-muted hover:text-accent-gold transition-colors flex items-center gap-3 w-fit group"
                   >
                     <social.icon size={16} className="group-hover:-translate-y-1 transition-transform" />
                     {social.name}
@@ -102,7 +99,7 @@ export default function Footer() {
                   href="https://t.me/YeEl1221"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white/60 hover:text-accent-gold transition-colors flex items-center gap-3 w-fit group"
+                  className="text-muted hover:text-accent-gold transition-colors flex items-center gap-3 w-fit group"
                 >
                   <svg
                     width="16"
@@ -121,14 +118,14 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/10 gap-6">
-          <div className="text-white/40 text-sm font-medium">
+          <div className="text-muted text-sm font-medium">
             &copy; {currentYear} Elshaday Dagne Demessie. All rights reserved.
           </div>
           
           <MagneticButton>
             <button 
               onClick={scrollToTop}
-              className="w-14 h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/60 hover:text-primary hover:bg-accent-gold hover:border-accent-gold transition-all group"
+              className="w-14 h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-muted hover:text-background hover:bg-accent-gold hover:border-accent-gold transition-all group"
             >
               <ArrowUp size={24} className="group-hover:-translate-y-1 transition-transform" />
             </button>

@@ -11,11 +11,11 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        primary: "#1E1E2F",
-        secondary: "#2D2D44",
+        primary: "var(--background)",
+        secondary: "var(--card)",
         accent: {
-          gold: "#F9A826",
-          purple: "#6C63FF",
+          gold: "var(--accent-gold)",
+          green: "var(--accent-green)",
         },
       },
       fontFamily: {

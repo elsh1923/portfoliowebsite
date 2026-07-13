@@ -23,11 +23,7 @@ const experiences = [
 
 export default function WorkExperience() {
   return (
-    <section id="experience" className="py-32 bg-primary relative overflow-hidden">
-      {/* Background Decor */}
-      <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-accent-purple/5 blur-[150px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-accent-gold/5 blur-[120px] rounded-full pointer-events-none" />
-
+    <section id="experience" className="py-32 bg-background text-foreground relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
         <div className="text-center mb-20">
@@ -38,11 +34,11 @@ export default function WorkExperience() {
             transition={{ duration: 0.8 }}
             className="inline-flex items-center gap-4 mb-6"
           >
-            <div className="h-[1px] w-8 bg-accent-purple" />
-            <span className="text-accent-purple font-bold tracking-[0.2em] uppercase text-sm">
+            <div className="h-[1px] w-8 bg-accent-gold" />
+            <span className="text-accent-gold font-bold tracking-[0.2em] uppercase text-sm">
               Career
             </span>
-            <div className="h-[1px] w-8 bg-accent-purple" />
+            <div className="h-[1px] w-8 bg-accent-gold" />
           </motion.div>
 
           <motion.h2
@@ -59,7 +55,7 @@ export default function WorkExperience() {
         {/* Timeline */}
         <div className="max-w-4xl mx-auto relative">
           {/* Vertical line */}
-          <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-accent-gold/60 via-accent-purple/30 to-transparent hidden md:block" />
+          <div className="absolute left-8 top-0 bottom-0 w-px bg-white/10 hidden md:block" />
 
           {experiences.map((exp, i) => (
             <motion.div
@@ -72,40 +68,28 @@ export default function WorkExperience() {
             >
               {/* Timeline dot */}
               <div
-                className="hidden md:flex absolute left-0 top-6 w-16 h-16 rounded-full items-center justify-center border-2 z-10 transition-all duration-500 group-hover:scale-110 shadow-lg"
-                style={{
-                  borderColor: exp.color,
-                  backgroundColor: `${exp.color}15`,
-                  boxShadow: `0 0 20px ${exp.color}30`,
-                }}
+                className="hidden md:flex absolute left-0 top-6 w-16 h-16 rounded-full items-center justify-center border-2 border-accent-gold bg-card z-10 transition-all duration-500 group-hover:scale-110"
               >
-                <Briefcase size={22} style={{ color: exp.color }} strokeWidth={1.5} />
+                <Briefcase size={22} className="text-accent-gold" strokeWidth={1.5} />
               </div>
 
               {/* Card */}
-              <div className="relative bg-white/[0.03] border border-white/8 hover:border-white/15 rounded-3xl p-8 md:p-10 transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl backdrop-blur-sm overflow-hidden">
-                {/* Glow on hover */}
-                <div
-                  className="absolute -top-16 -right-16 w-48 h-48 rounded-full blur-3xl opacity-0 group-hover:opacity-30 transition-opacity duration-700"
-                  style={{ backgroundColor: exp.color }}
-                />
-
+              <div className="relative bg-card border border-white/10 hover:border-white/20 rounded-3xl p-8 md:p-10 transition-all duration-500 hover:-translate-y-1 backdrop-blur-sm overflow-hidden">
                 {/* Top row */}
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6 relative z-10">
                   <div>
                     <span
-                      className="text-xs font-bold uppercase tracking-[0.2em] mb-2 block"
-                      style={{ color: exp.color }}
+                      className="text-xs font-bold uppercase tracking-[0.2em] mb-2 block text-accent-gold"
                     >
                       {exp.type}
                     </span>
-                    <h3 className="text-2xl md:text-3xl font-heading font-extrabold text-white group-hover:text-accent-gold transition-colors duration-300">
+                    <h3 className="text-2xl md:text-3xl font-heading font-extrabold text-foreground group-hover:text-accent-gold transition-colors duration-300">
                       {exp.role}
                     </h3>
-                    <p className="text-white/60 mt-1 text-base font-medium">{exp.company}</p>
+                    <p className="text-muted mt-1 text-base font-medium">{exp.company}</p>
                   </div>
 
-                  <div className="flex flex-col gap-2 shrink-0 text-sm text-white/40">
+                  <div className="flex flex-col gap-2 shrink-0 text-sm text-muted">
                     <div className="flex items-center gap-2">
                       <Calendar size={14} />
                       <span>{exp.period}</span>
@@ -118,17 +102,16 @@ export default function WorkExperience() {
                 </div>
 
                 {/* Description */}
-                <p className="text-white/55 leading-relaxed mb-8 relative z-10">{exp.description}</p>
+                <p className="text-muted leading-relaxed mb-8 relative z-10">{exp.description}</p>
 
                 {/* Highlights */}
                 <div className="relative z-10 space-y-3">
                   {exp.highlights.map((h, j) => (
                     <div key={j} className="flex items-start gap-3">
                       <div
-                        className="mt-[6px] w-1.5 h-1.5 rounded-full shrink-0"
-                        style={{ backgroundColor: exp.color }}
+                        className="mt-[6px] w-1.5 h-1.5 rounded-full shrink-0 bg-accent-gold"
                       />
-                      <span className="text-white/60 text-sm">{h}</span>
+                      <span className="text-muted text-sm">{h}</span>
                     </div>
                   ))}
                 </div>

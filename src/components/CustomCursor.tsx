@@ -70,7 +70,7 @@ export default function CustomCursor() {
         }}
         transition={{ duration: 0.4 }}
       >
-        <div className="bg-secondary/40 backdrop-blur-md px-5 py-2.5 rounded-full border border-white/5 shadow-2xl">
+        <div className="bg-card/40 backdrop-blur-md px-5 py-2.5 rounded-full border border-white/10">
           <span className="text-accent-gold font-heading font-extrabold tracking-[0.15em] uppercase text-xs md:text-sm">
             Let's work together
           </span>

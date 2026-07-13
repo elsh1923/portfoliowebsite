@@ -119,34 +119,22 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
       exit={{ opacity: 0, scale: 0.9 }}
       transition={{ duration: 0.5 }}
       onMouseMove={handleMouseMove}
-      className="group relative cursor-pointer rounded-[2rem] bg-secondary/30 border border-white/5 hover:border-white/10 overflow-hidden block"
+      aria-label={`Project: ${project.title}. ${project.description}`}
+      className="group relative cursor-pointer rounded-[2rem] bg-card border border-white/10 hover:border-white/20 overflow-hidden block"
     >
-      <motion.div
-        className="pointer-events-none absolute -inset-px rounded-[2rem] opacity-0 transition duration-500 group-hover:opacity-100"
-        style={{
-          background: useMotionTemplate`
-            radial-gradient(
-              600px circle at ${mouseX}px ${mouseY}px,
-              rgba(249, 168, 38, 0.1),
-              transparent 40%
-            )
-          `,
-        }}
-      />
-      
       <div className="relative aspect-[16/10] overflow-hidden rounded-t-[2rem]">
         <Image
           src={project.image}
-          alt={project.title}
+          alt={`Interface preview of the ${project.title} project`}
           width={800}
           height={500}
-          className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+          className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="absolute inset-0 bg-background/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         
         {/* Hover Action Overlay */}
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
-          <div className="w-16 h-16 rounded-full bg-accent-gold/90 text-primary flex items-center justify-center shadow-[0_0_30px_rgba(249,168,38,0.5)] backdrop-blur-md">
+          <div className="w-16 h-16 rounded-full bg-accent-gold text-background flex items-center justify-center backdrop-blur-md">
             <ExternalLink size={24} className="ml-1" />
           </div>
         </div>
@@ -155,32 +143,32 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
       <div className="p-8 relative z-10">
         <div className="flex justify-between items-start mb-4">
           <div>
-            <span className="text-accent-gold/80 text-xs font-bold uppercase tracking-[0.2em] mb-2 block">
+            <span className="text-muted text-xs font-bold uppercase tracking-[0.2em] mb-2 block">
               {project.category}
             </span>
-            <h3 className="text-2xl font-heading font-extrabold text-white group-hover:text-accent-gold transition-colors duration-300">
+            <h3 className="text-2xl font-heading font-extrabold text-foreground group-hover:text-accent-gold transition-colors duration-300">
               {project.title}
             </h3>
           </div>
         </div>
         
-        <p className="text-white/60 text-sm mb-6 line-clamp-2 leading-relaxed">
+        <p className="text-muted text-sm mb-6 line-clamp-2 leading-relaxed">
           {project.description}
         </p>
 
-        <div className="mb-8 p-4 bg-white/5 rounded-2xl border border-white/5 group-hover:border-accent-gold/20 transition-colors">
-          <h4 className="text-accent-gold/60 text-[10px] font-bold uppercase tracking-[0.2em] mb-2 flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-accent-gold/40" />
+        <div className="mb-8 p-4 bg-background rounded-2xl border border-white/5 transition-colors">
+          <h4 className="text-muted text-[10px] font-bold uppercase tracking-[0.2em] mb-2 flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent-gold" />
             Problem Solved
           </h4>
-          <p className="text-white/40 text-xs leading-relaxed italic">
+          <p className="text-muted text-xs leading-relaxed italic">
             &quot;{project.problem}&quot;
           </p>
         </div>
         
         <div className="flex flex-wrap gap-2">
           {project.tags.map((tag) => (
-            <span key={tag} className="px-3 py-1 bg-white/5 border border-white/10 text-white/50 rounded-full text-xs font-medium">
+            <span key={tag} className="px-3 py-1 bg-accent-green text-background rounded-full text-xs font-semibold">
               {tag}
             </span>
           ))}
@@ -196,10 +184,7 @@ export default function Portfolio() {
   const filteredProjects = projects.filter(p => filter === "All" || p.type === filter);
 
   return (
-    <section id="portfolio" className="py-32 bg-primary relative overflow-hidden">
-      {/* Background Decor */}
-      <div className="absolute top-1/4 right-0 w-[800px] h-[800px] bg-accent-gold/5 blur-[150px] rounded-full pointer-events-none" />
-      
+    <section id="portfolio" className="py-32 bg-background relative overflow-hidden text-foreground">
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col lg:flex-row justify-between items-end mb-20 gap-10">
           <div className="max-w-2xl">
@@ -209,8 +194,8 @@ export default function Portfolio() {
               viewport={{ once: true }}
               className="inline-flex items-center gap-4 mb-6"
             >
-              <div className="h-[1px] w-8 bg-accent-purple" />
-              <span className="text-accent-purple font-bold tracking-[0.2em] uppercase text-sm">
+              <div className="h-[1px] w-8 bg-accent-gold" />
+              <span className="text-accent-gold font-bold tracking-[0.2em] uppercase text-sm">
                 Selected Work
               </span>
             </motion.div>
@@ -222,7 +207,7 @@ export default function Portfolio() {
               transition={{ duration: 0.8 }}
               className="text-3xl md:text-5xl lg:text-7xl font-heading font-extrabold tracking-tight"
             >
-              Creative <span className="text-white/40 italic font-light">Showcase</span>
+              Creative <span className="text-muted italic font-light">Showcase</span>
             </motion.h2>
           </div>
           
@@ -230,7 +215,7 @@ export default function Portfolio() {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="flex flex-wrap gap-3 bg-white/5 p-2 rounded-full border border-white/10 backdrop-blur-md"
+            className="flex flex-wrap gap-3 bg-card p-2 rounded-full border border-white/10 backdrop-blur-md"
           >
              {categories.map(cat => (
                <button 
@@ -238,8 +223,8 @@ export default function Portfolio() {
                  onClick={() => setFilter(cat)}
                  className={`px-8 py-3 rounded-full text-sm font-bold tracking-wide transition-all duration-300 ${
                    filter === cat 
-                    ? "bg-accent-gold text-primary shadow-[0_0_20px_rgba(249,168,38,0.3)]" 
-                    : "text-white/50 hover:text-white hover:bg-white/10"
+                    ? "bg-accent-gold text-background" 
+                    : "text-muted hover:text-foreground hover:bg-white/5"
                  }`}
                >
                  {cat}

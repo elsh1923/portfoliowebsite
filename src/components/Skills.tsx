@@ -25,10 +25,7 @@ const skills = [
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-32 relative overflow-hidden bg-secondary/10">
-      <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-accent-gold/5 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-[-10%] left-[-5%] w-[600px] h-[600px] bg-accent-purple/5 blur-[150px] rounded-full pointer-events-none" />
-
+    <section id="skills" className="py-32 relative overflow-hidden bg-background text-foreground">
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-20">
           <motion.div
@@ -66,27 +63,16 @@ export default function Skills() {
               transition={{ duration: 0.7, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="group relative"
             >
-              <div 
-                className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl blur-xl"
-              />
-              <div className="relative h-full bg-white/[0.02] backdrop-blur-sm border border-white/5 group-hover:border-white/20 p-8 rounded-2xl overflow-hidden shadow-lg transition-all duration-500 hover:-translate-y-2 group-hover:shadow-2xl flex flex-col items-center text-center">
-                
-                {/* Decorative glowing orb in corner */}
-                <div 
-                  className="absolute -top-10 -right-10 w-32 h-32 rounded-full blur-3xl opacity-0 group-hover:opacity-50 transition-opacity duration-700"
-                  style={{ backgroundColor: skill.color }}
-                />
-
+              <div className="relative h-full bg-card border border-white/10 group-hover:border-white/20 p-8 rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-2 flex flex-col items-center text-center">
                 <div className="relative z-10 flex flex-col items-center">
                   <div 
-                    className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 border border-white/10 group-hover:border-white/20 shadow-inner"
-                    style={{ color: skill.color }}
+                    className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 border border-white/10 group-hover:border-white/20 text-foreground"
                   >
                     <skill.icon size={32} strokeWidth={1.5} />
                   </div>
                   
                   <h3 
-                    className="text-lg md:text-xl font-heading font-bold text-white transition-colors duration-500 group-hover:text-accent-gold"
+                    className="text-lg md:text-xl font-heading font-bold text-foreground transition-colors duration-500"
                   >
                     {skill.name}
                   </h3>

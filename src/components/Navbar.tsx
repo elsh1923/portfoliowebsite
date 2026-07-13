@@ -53,7 +53,7 @@ export default function Navbar() {
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-primary/80 backdrop-blur-md py-4 shadow-xl border-b border-white/5"
+          ? "bg-background/80 backdrop-blur-md py-4 border-b border-white/10"
           : "bg-transparent py-6"
       }`}
     >
@@ -64,8 +64,8 @@ export default function Navbar() {
             <MagneticButton key={link.name}>
               <motion.a
                 href={link.href}
-                whileHover={{ color: "#F9A826" }}
-                className="text-white/80 hover:text-accent-gold font-medium transition-colors px-4 py-2 flex items-center gap-2"
+                whileHover={{ color: "#C9A24B" }}
+                className="text-foreground/80 hover:text-accent-gold font-medium transition-colors px-4 py-2 flex items-center gap-2"
               >
                 <link.icon size={18} />
                 {link.name}
@@ -79,8 +79,8 @@ export default function Navbar() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ color: "#F9A826" }}
-                  className="text-white/60 hover:text-accent-gold transition-colors p-2"
+                  whileHover={{ color: "#C9A24B" }}
+                  className="text-muted hover:text-accent-gold transition-colors p-2"
                 >
                   <social.icon size={20} />
                 </motion.a>
@@ -93,7 +93,7 @@ export default function Navbar() {
         <div className="md:hidden absolute right-6">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-white hover:text-accent-gold transition-colors"
+            className="text-foreground hover:text-accent-gold transition-colors"
           >
             {isOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
@@ -105,7 +105,7 @@ export default function Navbar() {
         <motion.div
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: "auto" }}
-          className="md:hidden bg-primary/95 backdrop-blur-xl border-b border-white/5"
+          className="md:hidden bg-card/95 backdrop-blur-xl border-b border-white/10"
         >
           <div className="px-6 py-8 flex flex-col space-y-6">
             {navLinks.map((link) => (
@@ -113,18 +113,18 @@ export default function Navbar() {
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="text-xl font-heading text-white/80 hover:text-accent-gold flex items-center gap-4"
+                className="text-xl font-heading text-foreground/80 hover:text-accent-gold flex items-center gap-4"
               >
                 <link.icon size={24} className="text-accent-gold" />
                 {link.name}
               </a>
             ))}
-            <div className="flex items-center space-x-6 pt-4 border-t border-white/5">
+            <div className="flex items-center space-x-6 pt-4 border-t border-white/10">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
-                  className="text-white/60"
+                  className="text-muted"
                 >
                   <social.icon size={24} />
                 </a>
