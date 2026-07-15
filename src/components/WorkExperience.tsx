@@ -5,8 +5,25 @@ import { Briefcase, Calendar, MapPin } from "lucide-react";
 
 const experiences = [
   {
+    role: "Full-Stack Developer",
+    company: "Debre Tabor Debre Leulnat Medhanealem — Church School Website",
+    link: "https://eotc-open-source.vercel.app",
+    location: "Remote, Ethiopia",
+    period: "2026",
+    type: "Team Project · Unpaid",
+    description:
+      "Collaborated with a teammate to build and redesign a church school website end to end, taking ownership of backend and full-stack development. The UI draws inspiration from illuminated Ge'ez manuscripts to authentically reflect the institution's heritage.",
+    highlights: [
+      "End-to-end full-stack development in a two-person team",
+      "Implemented an illuminated-manuscript-inspired UI using Next.js and Tailwind CSS",
+      "Handled backend architecture and data flow alongside frontend delivery",
+    ],
+    color: "#C9A24B",
+  },
+  {
     role: "Frontend Developer",
     company: "Sisay Begena Musical Instruments Training Institute",
+    link: "",
     location: "Addis Ababa, Ethiopia",
     period: "2024",
     type: "Freelance",
@@ -86,7 +103,18 @@ export default function WorkExperience() {
                     <h3 className="text-2xl md:text-3xl font-heading font-extrabold text-foreground group-hover:text-accent-gold transition-colors duration-300">
                       {exp.role}
                     </h3>
-                    <p className="text-muted mt-1 text-base font-medium">{exp.company}</p>
+                    {exp.link ? (
+                      <a
+                        href={exp.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-muted mt-1 text-base font-medium hover:text-accent-gold transition-colors duration-300 underline underline-offset-4 decoration-white/20 hover:decoration-accent-gold"
+                      >
+                        {exp.company}
+                      </a>
+                    ) : (
+                      <p className="text-muted mt-1 text-base font-medium">{exp.company}</p>
+                    )}
                   </div>
 
                   <div className="flex flex-col gap-2 shrink-0 text-sm text-muted">
