@@ -7,7 +7,7 @@ const experiences = [
   {
     role: "Full-Stack Developer",
     company: "Debre Tabor Debre Leulnat Medhanealem — Church School Website",
-    link: "https://eotc-open-source.vercel.app",
+    link: "https://debre-tabor-portfolio.vercel.app/",
     location: "Remote, Ethiopia",
     period: "2026",
     type: "Team Project · Unpaid",
