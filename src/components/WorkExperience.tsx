@@ -23,7 +23,7 @@ const experiences = [
   {
     role: "Frontend Developer",
     company: "Sisay Begena Musical Instruments Training Institute",
-    link: "",
+    link: "https://sisaybegenaethiopia.com/am/about",
     location: "Addis Ababa, Ethiopia",
     period: "2024",
     type: "Freelance",
